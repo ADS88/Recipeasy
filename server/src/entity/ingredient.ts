@@ -4,20 +4,13 @@ import {
   Column,
   PrimaryColumn,
   BeforeInsert,
-  BaseEntity,
 } from "typeorm"
 
 @Entity()
-export class User extends BaseEntity {
+export class Ingredient {
   @PrimaryGeneratedColumn()
   id!: number
 
   @Column()
-  firstName!: string
-
-  @Column()
-  lastName!: string
-
-  @Column()
-  age!: number
+  name!: string
 }

@@ -1,9 +1,14 @@
 import { User } from "../entity/user"
-import { getRepository } from "typeorm"
+import {
+  getRepository,
+  createConnection,
+  getConnection,
+  Connection,
+} from "typeorm"
 
 const createUser = async (user: User) => {
   try {
-    getRepository(User).create(user)
+    await user.save()
   } catch (e) {
     throw new Error(e.message)
   }

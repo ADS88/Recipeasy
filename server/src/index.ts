@@ -10,7 +10,6 @@ class App {
     this.app = express()
     this.app.use(express.json())
     this.port = appInit.port
-
     this.assets()
   }
 
@@ -18,7 +17,8 @@ class App {
     this.app.use("/api/v1", userRouter)
   }
 
-  public listen() {
+  public async listen() {
+    await createConnection()
     this.app.listen(this.port, () => {
       console.log(`Listening to requests on http://localhost:${this.port}`)
     })

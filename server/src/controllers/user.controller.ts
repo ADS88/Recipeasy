@@ -4,14 +4,16 @@ import { User } from "../entity/user"
 
 const postUser = async (req: Request, res: Response, next: NextFunction) => {
   let { firstName, lastName, age } = req.body
-  const user: User = new User()
-  user.firstName = firstName
-  user.lastName = lastName
-  user.age = age
+  const user: User = User.create({
+    firstName: firstName,
+    lastName: lastName,
+    age: age,
+  })
   try {
-    createUser(user)
+    await createUser(user)
     res.sendStatus(201)
   } catch (e) {
+    console.log(e)
     res.sendStatus(500)
   }
 }
