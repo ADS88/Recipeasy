@@ -1,6 +1,7 @@
 import express, { Router, Request, Response } from "express"
+import postUser from "../controllers/user.controller"
 
 export const router: Router = express.Router()
-router.post("/user", (req: Request, resp: Response) => console.log("beans"))
+router.post("/user", postUser)
 
 export default router
