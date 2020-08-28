@@ -6,8 +6,9 @@ class App {
   public app: Application
   public port: number
 
-  constructor(appInit: { port: number; middleWares: any; controllers: any; }) {
+  constructor(appInit: { port: number; middleWares: any; controllers: any }) {
     this.app = express()
+    this.app.use(express.json())
     this.port = appInit.port
 
     this.assets()
