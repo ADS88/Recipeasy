@@ -2,9 +2,9 @@
   "name": "RecipeServer",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "ts-node-dev --respawn src/index.ts",
+    "start": "ts-node-dev --respawn src/server.ts",
     "build": "tsc"
   },
   "keywords": [],
