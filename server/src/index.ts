@@ -2,12 +2,26 @@ import express, { Application, Request, Response } from "express"
 import { createConnection } from "typeorm"
 import { router as userRouter } from "./routes/user.routes"
 
-const app: Application = express()
+class App {
+  public app: Application
+  public port: number
 
-app.use("/api/v1", userRouter)
+  constructor(appInit: { port: number; middleWares: any; controllers: any; }) {
+    this.app = express()
+    this.port = appInit.port
 
-const port = 3001
+    this.assets()
+  }
 
-app.listen(port, () => {
-  console.log(`Listening to requests on http://localhost:${port}`)
-})
+  private assets() {
+    this.app.use("/api/v1", userRouter)
+  }
+
+  public listen() {
+    this.app.listen(this.port, () => {
+      console.log(`Listening to requests on http://localhost:${this.port}`)
+    })
+  }
+}
+
+export default App
